@@ -1,0 +1,106 @@
+<?php
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// Clase basica para la manipulacion de las ideas de la comunidad
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+include "../../../core/globals.php";
+class innovativeIdea {
+
+    //..........................................................................
+    // Generar un identificador unico para cada idea
+    //..........................................................................
+    private function getUniqueId () {
+        $valueReturn = md5 ( uniqid ( rand (), true ) );
+    return $valueReturn;
+    }
+    //..........................................................................
+
+    //..........................................................................
+    // Crear una idea con base en los parametros recibidos del usuario
+    //..........................................................................
+    public function createIdea ( $idAuthor, $ideaTitle, $ideaDescription, $ideaTags ) {
+        // Inicializa las variables y parametros
+        $aDate      = date ( "d-m-Y H:i:s" );   // Fecha actual
+        $anIdeaId   = $this->getUniqueId ();    // Id unico de la idea
+        // Estructura los datos
+        $anIdea     = array (
+                        "ididea"        =>  $anIdeaId,
+                        "author"        =>  strtolower   ( $idAuthor ),
+                        "title"         =>  strtolower   ( $ideaTitle ),
+                        "tags"          =>  [ strtolower ( $ideaTags ) ],
+                        "description"   =>  strtolower   ( $ideaDescription ),
+                        "date"          =>  $aDate,
+                        "comments"      =>  []
+                    );
+
+        // Establece la conexion a MongoDB
+        $connectionMongo    = new MongoClient ( SERVER );
+        $mongoDB            = $connectionMongo->selectDB ( DATABASE );
+        $docIdeas           = $mongoDB->ideas;
+
+        // Graba los datos
+        $docIdeas->insert ( $anIdea );
+        $connectionMongo->close (); // Cierra la conexion
+    }
+    //..........................................................................
+
+    //..........................................................................
+    // Obtener datos de una idea para su edicion o para mostrar sus detalles
+    //..........................................................................
+    public function getIdeaDetails ( $idIdea ) {
+        // POR IMPLEMENTAR
+    }
+    //..........................................................................
+
+    //..........................................................................
+    // Actualizar / Editar una idea
+    //..........................................................................
+    public function updateIdea ( $idIdea, $ideaTitle, $ideaDescription, $ideaTags ) {
+        // POR IMPLEMENTAR
+    }
+    //..........................................................................
+
+    //..........................................................................
+    // Eliminar / Borrar una idea
+    //..........................................................................
+    public function deleteIdea ( $idIdea ) {
+        // Establece la conexion a MongoDB
+        $connectionMongo    = new MongoClient ( SERVER );
+        $mongoDB            = $connectionMongo->selectDB ( DATABASE );
+        $docIdeas           = $mongoDB->ideas;
+
+        // Elimina los datos
+        $docIdeas->remove ( array ( "ididea" => $idIdea ) );
+        $connectionMongo->close (); // Cierra la conexion
+    }
+    //..........................................................................
+
+    //..........................................................................
+    // Generar el listado de ideas de un autor
+    //..........................................................................
+    public function listIdeas ( $idAuthor ) {
+    $valueReturn = array();
+
+        // Establece la conexion a MongoDB
+        $connectionMongo    = new MongoClient ( SERVER );
+        $mongoDB            = $connectionMongo->selectDB ( DATABASE );
+        $docIdeas           = $mongoDB->ideas;
+
+        // Selecciona los datos
+        $data               = $docIdeas->find ( array ( "author" => $idAuthor ) );
+
+        // Codifica los datos en formato JSON para su estructuracion en la interfaz
+        $valueReturn = json_encode ( iterator_to_array ( $data ) );
+        $connectionMongo->close (); // Cierra la conexion
+    return $valueReturn;
+    }
+    //..........................................................................
+
+    //..........................................................................
+    // Agregar comentarios a una idea
+    //..........................................................................
+    public function addComment ( $idIdea, $idAuthor, $comments) {
+        // POR IMPLEMENTAR
+    }
+    //..........................................................................
+}
+?>
