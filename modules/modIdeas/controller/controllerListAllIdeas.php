@@ -11,7 +11,7 @@
         foreach ( $data as $field ) {
             $outHTML .=  "<tr class='active'>";
             $outHTML .=  "<td>" . setCharSetHTML ( $field->date       ) . "</td>";
-            $outHTML .=  "<td>" . setCharSetHTML ( $field->authorname ) . "</td>";
+            $outHTML .=  "<td>" . setCharSetHTML ( $field->author     ) . "</td>";
             $outHTML .=  "<td>" . setCharSetHTML ( $field->title      ) . "</td>";
             $outHTML .=  "<td>";
             foreach ( $field->tags as $tag ) {

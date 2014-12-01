@@ -21,7 +21,7 @@
                 <?php
                         // Obtiene e imprime la lista de ideas de un autor
                         include "../controller/controllerListIdeas.php";
-                        define ( "AUTHORID", "ce6fe2caa3a4a48157ddd4a0b1e6e329" ); // Cambiar por el id de sesion del usuario
+                        define ( "AUTHORID", $_SESSION["username"]);
                         $listIdeas = getListIdeas ( AUTHORID );
                         echo $listIdeas;
                 ?>

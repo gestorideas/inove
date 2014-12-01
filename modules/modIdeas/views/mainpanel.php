@@ -1,4 +1,10 @@
 <?php
+     session_start();
+     // Si no se ha inciado sesion, se redirecciona a la página principal
+     if(! isset($_SESSION["username"])){
+         header("Location: ../../../index.php");
+         exit;
+     }
     //..........................................................................
      if ( !empty ( $_GET ) ) { // Si se recibe un parametro desde la URL
         $action     = $_GET["action"]; // Captura el parametro de la accion a desarrollar
@@ -65,7 +71,7 @@
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&nbsp;John Doe&nbsp;<strong class="caret"></strong></a>
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&nbsp;<?php session_start(); echo $_SESSION["username"];?>&nbsp;<strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#"><i class="glyphicon glyphicon-user"></i>&nbsp;My Account</a>
@@ -76,7 +82,7 @@
                                 <li class="divider">
                                 </li>
                                 <li>
-                                    <a href="#"><i class="glyphicon glyphicon-lock"></i>&nbsp;Log Out</a>
+                                    <a href="../../../index.php"><i class="glyphicon glyphicon-lock"></i>&nbsp;Log Out</a>
                                 </li>
                             </ul>
                         </li>

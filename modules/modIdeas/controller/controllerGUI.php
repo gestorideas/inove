@@ -15,6 +15,8 @@
                 $moduleToLoad = "allideas.php"; break;
             case 4: // Interfaz de revision de una idea de otro autor
                 $moduleToLoad = "reviewideas.php"; break;
+            case 5: // Interfaz de revision de una idea de otro autor
+                $moduleToLoad = "register.php"; break;
         }
     return $moduleToLoad; // Muestra el contenido o la interfaz del modulo
     }

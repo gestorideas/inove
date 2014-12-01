@@ -13,7 +13,7 @@
             $outHTML .=  "<dt>Title:</dt>";
             $outHTML .=  "<dd>" . setCharSetHTML ( $field->title      ) . "</dd>";
             $outHTML .=  "<dt>Author:</dt>";
-            $outHTML .=  "<dd>" . setCharSetHTML ( $field->authorname ) . "</dd>";
+            $outHTML .=  "<dd>" . setCharSetHTML ( $field->author ) . "</dd>";
             $outHTML .=  "<dt>Date:</dt>";
             $outHTML .=  "<dd>" . setCharSetHTML ( $field->date       ) . "</dd>";
             $outHTML .=  "<dt>Tags:</dt><dd>";
