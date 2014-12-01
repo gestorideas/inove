@@ -4,7 +4,7 @@
                     My Brainstorming <small>Here begins a great idea...</small>
                 </h1>
                 <a href="./mainpanel.php?action=2" class="btn btn-warning btn-sm">
-                    <span class="glyphicon glyphicon-star"></span>New idea
+                    <span class="glyphicon glyphicon-star"></span>&nbsp;New idea
                 </a>
             </div>
   <!-- TABLE -->

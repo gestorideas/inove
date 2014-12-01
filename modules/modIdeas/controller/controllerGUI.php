@@ -7,10 +7,14 @@
     //..........................................................................
     function buildModulesContents ( $action ) {
         switch ( $action ) {
-            case 1:
+            case 1: // Lista de ideas del autor
                 $moduleToLoad = "dashboard.php"; break;
-            case 2:
+            case 2: // Interfaz del nueva idea
                 $moduleToLoad = "newidea.php"; break;
+            case 3: // Lista de todas las ideas del sitio
+                $moduleToLoad = "allideas.php"; break;
+            case 4: // Interfaz de revision de una idea de otro autor
+                $moduleToLoad = "reviewideas.php"; break;
         }
     return $moduleToLoad; // Muestra el contenido o la interfaz del modulo
     }

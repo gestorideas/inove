@@ -2,9 +2,16 @@
     //..........................................................................
      if ( !empty ( $_GET ) ) { // Si se recibe un parametro desde la URL
         $action     = $_GET["action"]; // Captura el parametro de la accion a desarrollar
+        $idparam    = ""; // Parametro auxiliar para funcionalidades adicionales en ciertas interfaces
+        if ( !empty ( $_GET["idparam"] ) ) {
+            $idparam = $_GET["idparam"];
+            unset ( $_GET["idparam"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
+            session_start();
+            $_SESSION["ididea"] = $idparam;
+        }
         unset ( $_GET["action"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
         include "../controller/controllerGUI.php"; // Controlador de los modulos a cargar segun la accion recibida
-        $showModule = buildModulesContents( $action ); // Funcion declarada en << controllerGUI.php >>
+        $showModule = buildModulesContents ( $action ); // Funcion declarada en << controllerGUI.php >>
      }
      else { // No hay un parametro valido
         unset ( $_GET["action"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
@@ -44,8 +51,11 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li <?php if ( $action == 1 ) { echo 'class="active"'; } ?> >
                             <a href="./mainpanel.php?action=1"><i class="glyphicon glyphicon-home"></i>&nbsp;My brainstorming</a>
+                        </li>
+                        <li <?php if ( $action == 3 ) { echo 'class="active"'; } ?> >
+                            <a href="./mainpanel.php?action=3"><i class="glyphicon glyphicon-cloud"></i>&nbsp;¿What's going on?</a>
                         </li>
                     </ul>
                     <form class="navbar-form navbar-left" role="search">

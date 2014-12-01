@@ -3,6 +3,7 @@ db.ideas.insert (
     {
         ididea: "",
         author: "",
+	authorname: "",
         title:  "",
         tags:   [
                  "",
@@ -10,6 +11,7 @@ db.ideas.insert (
                 ],
         description: "",
         date: "",
+	votes: "",
         comments: [
                     {
                         commentedby: "",
