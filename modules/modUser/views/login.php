@@ -30,54 +30,58 @@
 </head>
 <body>
 <div class="container" style="margin-top:10%">
-    <div class="col-md-3 col-md-offset-4">
-        <div class="panel member_signin">
-            <div class="panel-body">
-                <div class="fa_user">
-                    <i class="fa fa-user"></i>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                            <h3 class="panel-title">Member Login</h3>
+
                 </div>
-                <p class="member">Member Login</p>
-                <form role="form" class="loginform" method='post' action='../controller/controllerLogIn.php'>
-                    <?php
-                    if ( !empty ( $_GET ) ) { // Si se recibe un parametro desde la URL
-                        $error     = $_GET["error"]; // Captura el parametro de la accion a desarrollar
-                        unset ( $_GET["error"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
-                        if ( $error == 1 ){
-                            echo'<div class="row"><div class="col-md-12"><p><code>The username does not exist</code></p></div></div>';
-                        }else{
-                            if ( $error == 2 ){
-                                echo'<div class="row"><div class="col-md-12"><p><code>The password is not valid</code></p></div></div>';
+                <div class="panel-body">
+                    <form role="form" class="loginform" method='post' action='../controller/controllerLogIn.php'>
+                        <?php
+                        if ( !empty ( $_GET ) ) { // Si se recibe un parametro desde la URL
+                            $error     = $_GET["error"]; // Captura el parametro de la accion a desarrollar
+                            unset ( $_GET["error"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
+                            if ( $error == 1 ){
+                                echo'<div class="alert alert-danger">The username does not exist</div>';
+                            }else{
+                                if ( $error == 2 ){
+                                    echo'<div class="alert alert-danger">The password is not valid</div>';
+                                }
                             }
                         }
-                    }
-                    ?>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="sr-only">Email address</label>
-                        <div class="input-group">
-                            <input type="username" class="form-control" id="username" name="username"
-                                   placeholder="Username" required="required">
+                        ?>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="sr-only">Email address</label>
+                            <div class="input-group">
+                                <input type="username" class="form-control" id="username" name="username"
+                                       placeholder="Username" required="required">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1" class="sr-only">Password</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="password" name="password"
-                                   placeholder="Password" required="required">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="sr-only">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password"
+                                       placeholder="Password" required="required">
+                            </div>
                         </div>
-                    </div>
-                    <input type="submit" class="btn btn-primary btn-md login" value="LOG IN"/>
-                </form>
-                <div class="col-md-8">
-                    <p class="forgotpass"><a href="#" class="small">Forgot Password?</a></p>
-                </div>
-                <div class="col-md-4">
-                    <p class="forgotpass"><a href="register.php" class="small">Register</a></p>
-                </div>
+                        <div class="input-group">
+                            <input type="submit" class="btn btn-primary btn-md login" value="LOG IN"/>
+                        </div>
+
+                        <p class="forgotpass"><a href="#" class="small">Forgot Password?</a></p>
+                    </form>
 
 
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><p class="forgotpass">Not registered?<a href="register.php"> Register here</a></p></li>
+                </ul>
             </div>
         </div>
     </div>
+
 </div>
 </body>
 </html>

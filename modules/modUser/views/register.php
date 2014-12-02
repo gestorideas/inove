@@ -20,11 +20,13 @@
     <script type="text/javascript" src="./actions/validateRegister.js" ></script>
 </head>
 <body>
-<div class="container" style="margin-top:10%">
+<div class="container" style="margin-top:5%">
     <div class="col-md-6 col-md-offset-3">
-        <div class="panel member_signin">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Register</h3>
+            </div>
             <div class="panel-body">
-                <p class="member">Register</p>
                 <form role="form" class="registerform" method='post' action='../controller/controllerNewUser.php'  onSubmit="return validatePassword()">
 
                     <?php
@@ -32,8 +34,12 @@
                         $error     = $_GET["error"]; // Captura el parametro de la accion a desarrollar
                         unset ( $_GET["error"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
                         if ( $error == 1 ){
-                            echo'<div class="row"><div class="col-md-12"><p><code>The username already exists</code></p></div></div>';
+                            echo'<div class="alert alert-danger">User name does already exists</div>';
+                        }else{
+                            echo '<div class="alert alert-info">The fields with character * are mandatory</div>';
                         }
+                    }else{
+                        echo '<div class="alert alert-info">The fields with character * are mandatory</div>';
                     }
                     ?>
 
@@ -64,14 +70,14 @@
                                 <label for="exampleInputPassword1" class="sr-only">Password</label>
                                 <div class="input-group">
                                     <input type="password" class="form-control" name="exampleInputPassword1" id="exampleInputPassword1"
-                                           placeholder="Password" required="required">
+                                           placeholder="Password*" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="passwordConfirmation" class="sr-only">Confirm Password</label>
                                 <div class="input-group">
                                     <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation"
-                                           placeholder="Confirm Password" required="required">
+                                           placeholder="Confirm Password*" required="required">
 
                                 </div>
                                 <div id="mensaje5" class="errores"><code> The passwords are mandatory </code></div>
@@ -85,7 +91,7 @@
                                 <label for="name" class="sr-only">Name</label>
                                 <div class="input-group">
                                     <input type="name" class="form-control" name="name" id="name"
-                                           placeholder="Name" required="required">
+                                           placeholder="Name*" required="required">
                                 </div>
                                 <div id="mensaje1" class="errores"><code> Name does not valid  </code></div>
                             </div>
@@ -93,7 +99,7 @@
                                 <label for="name" class="sr-only">Last Name</label>
                                 <div class="input-group">
                                     <input type="last_name" class="form-control" name="last_name" id="last_name"
-                                           placeholder="Last Name" required="required">
+                                           placeholder="Last Name*" required="required">
                                 </div>
                                 <div id="mensaje2" class="errores"><code> Last name does not valid </code></div>
                             </div>
@@ -121,8 +127,19 @@
 
                     <input type="submit" class="btn btn-primary btn-md login" value="REGISTER" id="register"/>
                     <p class="forgotpass"><a href="login.php" class="small">Cancel</a></p>
+
                 </form>
             </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">
+                            I agree with the terms of the community (<a href="#">contract</a>)
+                        </label>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
