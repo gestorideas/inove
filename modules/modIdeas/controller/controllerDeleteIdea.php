@@ -10,7 +10,7 @@
      }
      else { // No hay un parametro valido
         unset ( $_GET["ididea"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
-        header ( "Location:../../../index.php" ); // Redirecciona al inicio (login)
+        header ( "Location:../../../login.php" ); // Redirecciona al inicio (login)
         exit;
      }
     //..........................................................................

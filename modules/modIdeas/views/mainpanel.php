@@ -21,7 +21,7 @@
      }
      else { // No hay un parametro valido
         unset ( $_GET["action"] ); // Limpia la variable (por si el usuario cambia muchas veces, no se acumule el arreglo)
-        header ( "Location:../../../index.php" ); // Redirecciona al inicio (login)
+        header ( "Location:../../../login.php" ); // Redirecciona al inicio (login)
         exit;
      }
     //..........................................................................
@@ -82,7 +82,7 @@
                                 <li class="divider">
                                 </li>
                                 <li>
-                                    <a href="../../../index.php"><i class="glyphicon glyphicon-lock"></i>&nbsp;Log Out</a>
+                                    <a href="../../modUser/views/login.php"><i class="glyphicon glyphicon-lock"></i>&nbsp;Log Out</a>
                                 </li>
                             </ul>
                         </li>

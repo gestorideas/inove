@@ -11,7 +11,12 @@ if ( !empty ( $_POST ) ) { // Si se recibe un parametro desde la URL
     $password           = trim ( $_POST["exampleInputPassword1"]);
 
     // Procesa los datos y hace la operacion
-    newUser ( $userName, $name, $lastName_1, $lastName_2, $email, $tags , $password);
+    if (newUser ( $userName, $name, $lastName_1, $lastName_2, $email, $tags , $password) == 0){
+        header("Location: ../views/login.php");
+    }else{
+        header("Location: ../views/register.php?error=1");
+    }
+
     return true; // Todo salio bien
 }
 else { // No hay un parametro valido
@@ -22,8 +27,8 @@ else { // No hay un parametro valido
 //..........................................................................
 function newUser ( $userName, $name, $lastName_1, $lastName_2, $email, $tags , $password) {
     include "./classInovaUser.php";
-    $aUser = new classInovaUser ();
-    $aUser->addUser ( $userName, $name, $lastName_1, $lastName_2, $email, $tags , $password);
+    $aUser = new InovaUser ();
+    return $aUser->addUser ( $userName, $name, $lastName_1, $lastName_2, $email, $tags , $password);
 }
 //..........................................................................
 ?>

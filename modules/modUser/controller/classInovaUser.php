@@ -1,14 +1,13 @@
 <?php
 include "../../../core/globals.php";
 
-class classInovaUser {
+class InovaUser {
 //..........................................................................
 
     //..........................................................................
     // Login
     //..........................................................................
     public function validateUser ( $userName, $password ) {
-
         // Establece la conexion a MongoDB
         $connectionMongo    = new MongoClient ( SERVER );
         $mongoDB            = $connectionMongo->selectDB ( DATABASE );
@@ -42,6 +41,7 @@ class classInovaUser {
     //..........................................................................
     public function addUser ( $userName, $name, $lastName_1, $lastName_2, $email, $userTags , $password) {
         // Inicializa las variables y parametros
+        $valueReturn = 0;
         $aDate        = date ( "d-m-Y H:i:s" );   // Fecha actual
         // Estructura los datos
         echo $password;
@@ -68,6 +68,7 @@ class classInovaUser {
         }
         catch (MongoCursorException $e) {
             if ($e->getCode()==11000){
+                $valueReturn = -1;
                 echo "El usuario ya existe"."\n";
             }
         }
@@ -76,6 +77,7 @@ class classInovaUser {
         // Graba los datos
 
         $connectionMongo->close (); // Cierra la conexion
+        return $valueReturn;
     }
 
 
