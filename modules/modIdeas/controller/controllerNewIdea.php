@@ -1,6 +1,7 @@
 <?php
     //..........................................................................
-     define ( "AUTHORID", "ce6fe2caa3a4a48157ddd4a0b1e6e329" ); // Cambiar por el id de sesion del usuario
+     session_start();
+     define ( "AUTHORID", $_SESSION["username"]); // Cambiar por el id de sesion del usuario
      if ( !empty ( $_POST ) ) { // Si se recibe un parametro desde la URL
         // Captura los parametros del formulario
         $ideaTitle          = trim ( $_POST["txtIdea"] );
