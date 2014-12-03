@@ -27,7 +27,7 @@
 
             if ( $field->sold->flag == 0){
                 $outHTML .=
-                    "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-warning btn-sm'>"
+                    "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-success btn-sm'>"
                     . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a>";
             }else{
                 $outHTML .=
