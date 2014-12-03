@@ -23,8 +23,22 @@
                     . "<a href='" . $field->ididea . "' class='btn btn-primary btn-sm'>"
                     . "<span class='glyphicon glyphicon-pencil'></span>&nbsp;Edit idea</a>"
                     . "<a href='../controller/controllerDeleteIdea.php?ididea=" . $field->ididea . "' class='btn btn-danger btn-sm'>"
-                    . "<span class='glyphicon glyphicon-trash'></span>&nbsp;Delete idea</a>"
-                    . "</td></tr>";
+                    . "<span class='glyphicon glyphicon-trash'></span>&nbsp;Delete idea</a>";
+
+            if ( $field->sold->flag == 0){
+                $outHTML .=
+                    "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-warning btn-sm'>"
+                    . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a>";
+            }else{
+                $outHTML .=
+                    "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-warning btn-sm' disabled>"
+                    . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a>";
+            }
+
+
+
+            $outHTML .=
+                      "</td></tr>";
         }
     return $outHTML;
     }
