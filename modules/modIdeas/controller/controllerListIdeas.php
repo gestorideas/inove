@@ -31,7 +31,7 @@
                     . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a>";
             }else{
                 $outHTML .=
-                    "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-warning btn-sm' disabled>"
+                    "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
                     . "<span class='glyphicon glyphicon-euro'></span>&nbsp;Sell idea</a>";
             }
 
