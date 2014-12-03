@@ -32,7 +32,7 @@
             }else{
                 $outHTML .=
                     "<a href='../controller/controllerSellIdea.php?ididea=" . $field->ididea . "' class='btn btn-default btn-sm' disabled>"
-                    . "<span class='glyphicon glyphicon-euro'></span>&nbsp;&nbsp; On sell&nbsp;</a>";
+                    . "<span class='glyphicon glyphicon-euro'></span>&nbsp; On sale&nbsp;</a>";
             }
 
 
